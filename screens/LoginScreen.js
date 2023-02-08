@@ -43,7 +43,7 @@ const LoginScreen = ()=>{
         console.log('Account created')
         const user = userCredentials.user;
         console.log('Registrado con correo : ',user.emai)
-        navigation.navigate("Home")
+        navigation.navigate("Camera")
       })
       .catch(error => {
         console.log(error)
@@ -58,7 +58,7 @@ const LoginScreen = ()=>{
         ToastAndroid.show('Sesion iniciada', ToastAndroid.SHORT);
         const user = userCredentials.user;
         console.log('Sesion iniciada con correo = ',user.emai)
-        navigation.navigate("Home")
+        navigation.navigate("Camera")
       })
       .catch(error => {
         console.log(error)
