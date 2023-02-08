@@ -47,6 +47,7 @@ const LoginScreen = ()=>{
       })
       .catch(error => {
         console.log(error)
+        ToastAndroid.show('Usuario existente', ToastAndroid.SHORT);
       })
     }
     const handleLogin = () =>{
@@ -62,6 +63,7 @@ const LoginScreen = ()=>{
       })
       .catch(error => {
         console.log(error)
+        ToastAndroid.show('Usuario no encontrado', ToastAndroid.SHORT);
       })
     }
   

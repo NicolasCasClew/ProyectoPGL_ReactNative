@@ -1,5 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { Button, SafeAreaView, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Camera } from 'expo-camera';
 import { shareAsync } from 'expo-sharing';
 import * as MediaLibrary from 'expo-media-library';
@@ -69,18 +70,29 @@ export default function App() {
     return (
       <SafeAreaView style={styles.container}>
         <Image style={styles.preview} source={{ uri: "data:image/jpg;base64," + photo.base64 }} />
-        <Button title="Share" onPress={sharePic} />
-        {hasMediaLibraryPermission ? <Button title="Save" onPress={savePhoto} /> : undefined}
-        <Button title="Discard" onPress={() => setPhoto(undefined)} />
+        <View style= {styles.buttonContainer}>
+        <TouchableOpacity onPress={sharePic} style={styles.button}>
+          <Icon style={styles.buttonContainer} name="share" size={65} />
+          </TouchableOpacity>
+        {hasMediaLibraryPermission ? <TouchableOpacity onPress={savePhoto} style={styles.button}>
+          <Icon style={styles.buttonContainer} name="save" size={65} />
+          </TouchableOpacity> : undefined}
+          <TouchableOpacity onPress={() => setPhoto(undefined)} style={styles.button}>
+          <Icon style={styles.buttonContainer} name="trash" size={65} />
+          </TouchableOpacity>
+ 
+        </View>
       </SafeAreaView>
     );
   }
 
   return (
     <Camera style={styles.container} ref={cameraRef}>
-      <SafeAreaView>
-        <View style={styles.buttonContainer}>
-          <Button title="Take Pic" onPress={() => takePic()} />
+      <SafeAreaView style={styles.buttonContainer}>
+        <View >
+          <TouchableOpacity onPress={takePic} style={styles.buttonContainer}>
+          <Icon style={styles.cameraButton} name="scan-circle" size={65} />
+          </TouchableOpacity>
         </View>
         <StatusBar style="auto" />
       </SafeAreaView>
@@ -91,17 +103,39 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //flexDirection: 'row-reverse',
+    //alignSelf: 'flex-end',
+    //flexWrap: 'nowrap',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor:'white',
   },
   buttonContainer: {
-    backgroundColor: '#fff',
-    alignSelf: 'flex-end'
+
+   justifyContent: 'space-around',
+    flexDirection: 'row-reverse',
+    backgroundColor: 'white',
+    alignSelf: 'center',
+    alignContent: 'center',
   },
   preview: {
     alignSelf: 'stretch',
     flex: 1
-  }
+  },
+  button:{
+    marginVertical:10,
+    borderRadius:5,
+    marginHorizontal:10,
+    borderColor: 'black',
+    borderWidth: 3,
+  },
+  cameraButton:{
+   
+    borderRadius:90,
+
+    borderColor: 'black',
+    borderWidth: 0,
+  },
 });
 
 /*
