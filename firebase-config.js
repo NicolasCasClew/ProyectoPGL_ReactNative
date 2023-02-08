@@ -19,7 +19,7 @@ let app;
 app = firebase.initializeApp(firebaseConfig);
 if (firebase.app.lenght === 0){
   app = firebase.initializeApp(firebaseConfig);
-}else{
+}else{ºº
   app= firebase.app()
 }
 

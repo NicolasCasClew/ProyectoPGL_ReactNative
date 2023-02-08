@@ -39,11 +39,12 @@ const LoginScreen = ()=>{
       auth.
       createUserWithEmailAndPassword(emai, password)
       .then(userCredentials => {
-        ToastAndroid.showWithGravity('Cuenta Creada', ToastAndroid.SHORT);
+        //ToastAndroid.showWithGravity('Cuenta Creada', ToastAndroid.SHORT);
         console.log('Account created')
         const user = userCredentials.user;
-        console.log('Registrado con correo : ',user.emai)
-        navigation.navigate("Camera")
+        //console.log('Registrado con correo : ',user.emai)
+        ToastAndroid.show('Cuenta creada con exito', ToastAndroid.SHORT);
+        //navigation.navigate("Camera")
       })
       .catch(error => {
         console.log(error)
@@ -58,7 +59,7 @@ const LoginScreen = ()=>{
         console.log('Account Logged In')
         ToastAndroid.show('Sesion iniciada', ToastAndroid.SHORT);
         const user = userCredentials.user;
-        console.log('Sesion iniciada con correo = ',user.emai)
+        //console.log('Sesion iniciada con correo = ',user.emai)
         navigation.navigate("Camera")
       })
       .catch(error => {
